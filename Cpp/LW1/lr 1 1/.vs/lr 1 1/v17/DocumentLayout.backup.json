@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\lr 1 1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|solutionrelative:lr 1 1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|solutionrelative:book.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BD127437-6FDC-427C-BF5A-D721FD2B1161}|lr 1 1.vcxproj|solutionrelative:book.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "book.h",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.h",
+              "RelativeDocumentMoniker": "book.h",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.h",
+              "RelativeToolTip": "book.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-12T12:09:20.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "book.cpp",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.cpp",
+              "RelativeDocumentMoniker": "book.cpp",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\book.cpp",
+              "RelativeToolTip": "book.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-12T12:09:20.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "lr 1 1.cpp",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\lr 1 1.cpp",
+              "RelativeDocumentMoniker": "lr 1 1.cpp",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\\Documents\\OOP_Nikitiuk_Sasha\\Cpp\\LW1\\lr 1 1\\lr 1 1.cpp",
+              "RelativeToolTip": "lr 1 1.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-12T12:09:20.96Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

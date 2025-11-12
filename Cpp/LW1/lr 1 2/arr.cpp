@@ -14,7 +14,7 @@ myarr::~myarr()
 
 void myarr::vvid()
 {
-	cout << "¬ведiть " << n << " елементiв масиву:\n";
+	cout << "¬ведiть " << n << " елементi	в масиву:\n";
 	for (int i = 0; i < n; i++) {
 		cout << "≈лемент [" << i << "]: ";
 		cin >> arr[i];

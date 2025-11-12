@@ -5,20 +5,18 @@ using namespace std;
 
 class Book {
 private:
-    string name;     // назва книги
-    string author;   // автор
-    float price;     // вартість
+    string name;     
+    string author;   
+    float price;     
 
 public:
-    Book();                                // конструктор без параметрів
-    Book(const string& n, const string& a, float p); // конструктор з параметрами
-    ~Book();                               // деструктор
+    Book();                               
+    Book(const string& n, const string& a, float p);
+    ~Book();                               
 
-    // методи
     void setBook(const string& n, const string& a, float p);
     void print() const;
 
-    // геттери
     string getName() const;
     string getAuthor() const;
     float getPrice() const;

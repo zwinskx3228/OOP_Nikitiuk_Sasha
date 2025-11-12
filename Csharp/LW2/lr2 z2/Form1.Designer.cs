@@ -80,11 +80,6 @@
             label22 = new Label();
             label28 = new Label();
             saveFileDialog1 = new SaveFileDialog();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            button3 = new Button();
-            label29 = new Label();
-            label30 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -364,11 +359,6 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(label30);
-            panel1.Controls.Add(label29);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(textBox7);
-            panel1.Controls.Add(textBox6);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(textBox5);
             panel1.Controls.Add(label27);
@@ -386,7 +376,7 @@
             // 
             button2.BackColor = Color.Tan;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(18, 114);
+            button2.Location = new Point(18, 140);
             button2.Name = "button2";
             button2.Size = new Size(140, 29);
             button2.TabIndex = 32;
@@ -397,7 +387,7 @@
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(113, 81);
+            textBox5.Location = new Point(113, 107);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(43, 27);
             textBox5.TabIndex = 31;
@@ -406,7 +396,7 @@
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Georgia", 10.8F, FontStyle.Italic, GraphicsUnit.Point);
-            label27.Location = new Point(14, 58);
+            label27.Location = new Point(14, 84);
             label27.Name = "label27";
             label27.Size = new Size(144, 42);
             label27.TabIndex = 30;
@@ -437,7 +427,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Georgia", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label11.Location = new Point(41, 18);
+            label11.Location = new Point(41, 44);
             label11.Name = "label11";
             label11.Size = new Size(79, 21);
             label11.TabIndex = 27;
@@ -676,52 +666,6 @@
             label28.Text = "⇱";
             label28.Click += label28_Click;
             // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(23, 321);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(47, 27);
-            textBox6.TabIndex = 33;
-            textBox6.TextChanged += textBox6_TextChanged;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(111, 321);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(47, 27);
-            textBox7.TabIndex = 34;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Tan;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(18, 368);
-            button3.Name = "button3";
-            button3.Size = new Size(140, 29);
-            button3.TabIndex = 35;
-            button3.Text = "Порівняти";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Times New Roman", 12F, FontStyle.Italic, GraphicsUnit.Point);
-            label29.Location = new Point(16, 271);
-            label29.Name = "label29";
-            label29.Size = new Size(147, 44);
-            label29.TabIndex = 26;
-            label29.Text = "Порівняти ціну \r\nкімнат";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Location = new Point(76, 325);
-            label30.Name = "label30";
-            label30.Size = new Size(26, 20);
-            label30.TabIndex = 36;
-            label30.Text = "VS";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -814,10 +758,5 @@
         private TextBox textBox5;
         private Label label28;
         private SaveFileDialog saveFileDialog1;
-        private Label label29;
-        private Button button3;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private Label label30;
     }
 }

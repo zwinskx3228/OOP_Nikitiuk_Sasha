@@ -2,7 +2,6 @@
 #include <vector>
 
 int main() {
-    // прості об'єкти
     setlocale(0, "ukr");
     Book b1;
     Book b2("Кобзар", "Тарас Шевченко", 300.0f);
@@ -13,7 +12,7 @@ int main() {
     b1.print();
     b2.print();
     cout << endl;
-    // список книг
+
     vector<Book> library;
     library.emplace_back("Хатина дядька Тома", "Гаррiєт Бiчер Стоу", 120.0f);
     library.emplace_back("Майстер i Маргарита", "Михайло Булгаков", 220.0f);

@@ -8,31 +8,30 @@ namespace lr_1_3
     {
         public class Room
         {
-            public int Місця { get; set; }
-            public double Площа { get; set; }
-            public int КількістьЛіжок { get; set; }
-            public string ВидЛіжка { get; set; }
-            public string Меблі { get; set; }
-            public bool WiFi { get; set; }
-            public string Клімат { get; set; }
-            public bool Харчування { get; set; }
-            public string Санвузол { get; set; }
-            public decimal Ціна { get; set; }
+            public int seats { get; set; }
+            public double area { get; set; }
+            public int beds { get; set; }
+            public string bedType { get; set; }
+            public string furniture { get; set; }
+            public bool wifi { get; set; }
+            public string climate { get; set; }
+            public bool food { get; set; }
+            public string toilet { get; set; }
+            public decimal price { get; set; }
 
-            public Room(int місця, double площа, int ліжка, string видЛіжка,
-                        string меблі, bool wifi, string клімат,
-                        bool харчування, string санвузол, decimal ціна)
+            public Room(int seats, double area, int beds, string bedType, string furniture, bool wifi,
+                        string climate, bool food, string toilet, decimal price)
             {
-                Місця = місця;
-                Площа = площа;
-                КількістьЛіжок = ліжка;
-                ВидЛіжка = видЛіжка;
-                Меблі = меблі;
-                WiFi = wifi;
-                Клімат = клімат;
-                Харчування = харчування;
-                Санвузол = санвузол;
-                Ціна = ціна;
+                this.seats = seats;
+                this.area = area;
+                this.beds = beds;
+                this.bedType = bedType;
+                this.furniture = furniture;
+                this.wifi = wifi;
+                this.climate = climate;
+                this.food = food;
+                this.toilet = toilet;
+                this.price = price;
             }
         }
         private List<Room> rooms = new List<Room>();
@@ -43,80 +42,65 @@ namespace lr_1_3
             label28.Hide();
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView2.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.Columns.Add("Місця", "К-сть місць");
-            dataGridView1.Columns.Add("Площа", "Площа (м²)");
-            dataGridView1.Columns.Add("Ліжко", "К-сть ліжок");
-            dataGridView1.Columns.Add("ВидЛіжка", "Вид ліжка");
-            dataGridView1.Columns.Add("Меблі", "Меблі / Техніка");
+            dataGridView1.Columns.Add("Seats", "Seats");
+            dataGridView1.Columns.Add("Area", "Area (m²)");
+            dataGridView1.Columns.Add("Beds", "Beds");
+            dataGridView1.Columns.Add("BedType", "Bed type");
+            dataGridView1.Columns.Add("Furniture", "Furniture / Tech");
             dataGridView1.Columns.Add("WiFi", "Wi-Fi");
-            dataGridView1.Columns.Add("Клімат", "Клімат");
-            dataGridView1.Columns.Add("Харчування", "Харчування");
-            dataGridView1.Columns.Add("Санвузол", "Санвузол");
-            DataGridViewTextBoxColumn priceColumn = new DataGridViewTextBoxColumn();
-            priceColumn.Name = "Ціна";
-            priceColumn.HeaderText = "Ціна (грн)";
-            priceColumn.ValueType = typeof(decimal);
-            priceColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-            dataGridView1.Columns.Add(priceColumn);
-
+            dataGridView1.Columns.Add("Climate", "Climate");
+            dataGridView1.Columns.Add("Food", "Food");
+            dataGridView1.Columns.Add("Toilet", "Toilet");
+            dataGridView1.Columns.Add("Price", "Price (₴)");
             foreach (DataGridViewColumn col in dataGridView1.Columns)
             {
-                DataGridViewColumn copyCol = (DataGridViewColumn)col.Clone();
-                copyCol.SortMode = DataGridViewColumnSortMode.Automatic;
-                dataGridView2.Columns.Add(copyCol);
+                dataGridView2.Columns.Add((DataGridViewColumn)col.Clone());
             }
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView2.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-        }
-
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                int місця = int.Parse(textBox1.Text);
-                double площа = double.Parse(textBox2.Text);
-                int ліжка = int.Parse(textBox3.Text);
-                string видЛіжка = comboBox1.Text;
-                string меблі = string.Join("; ", checkedListBox1.CheckedItems.Cast<string>());
-                string клімат = string.Join("; ", checkedListBox2.CheckedItems.Cast<string>());
-
+                int seats = int.Parse(textBox1.Text);
+                double area = double.Parse(textBox2.Text);
+                int beds = int.Parse(textBox3.Text);
+                string bedType = comboBox1.Text;
+                string furniture = string.Join("; ", checkedListBox1.CheckedItems.Cast<string>());
+                string climate = string.Join("; ", checkedListBox2.CheckedItems.Cast<string>());
                 bool wifi = checkBox1.Checked;
-                bool харчування = checkBox2.Checked;
-                string санвузол = comboBox2.Text;
-                decimal ціна = decimal.Parse(textBox4.Text);
+                bool food = checkBox2.Checked;
+                string toilet = comboBox2.Text;
+                decimal price = decimal.Parse(textBox4.Text);
 
-                Room room = new Room(місця, площа, ліжка, видЛіжка, меблі, wifi, клімат, харчування, санвузол, ціна);
-                rooms.Add(room);
-                dataGridView1.Rows.Add(
-                    room.Місця,
-                    room.Площа,
-                    room.КількістьЛіжок,
-                    room.ВидЛіжка,
-                    room.Меблі,
-                    room.WiFi ? "Є" : "Немає",
-                    room.Клімат,
-                    room.Харчування ? "Є" : "Немає",
-                    room.Санвузол,
-                    room.Ціна
+                Room r = new Room(seats, area, beds, bedType, furniture, wifi, climate, food, toilet, price);
+                rooms.Add(r);
+
+                int v = dataGridView1.Rows.Add(
+                    r.seats,
+                    r.area,
+                    r.beds,
+                    r.bedType,
+                    r.furniture,
+                    r.wifi ? "Yes" : "No",
+                    r.climate,
+                    r.food ? "Yes" : "No",
+                    r.toilet,
+                    r.price
                 );
 
-                MessageBox.Show("Кімната додана!");
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
-                checkBox1.Checked = false;
-                checkBox2.Checked = false;
+                MessageBox.Show("Room added!");
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+                textBox4.Clear();
                 comboBox1.SelectedIndex = -1;
                 comboBox2.SelectedIndex = -1;
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
                 for (int i = 0; i < checkedListBox1.Items.Count; i++)
                 {
                     checkedListBox1.SetItemChecked(i, false);
@@ -128,7 +112,7 @@ namespace lr_1_3
             }
             catch
             {
-                MessageBox.Show("Перевірте правильність введених даних!");
+                MessageBox.Show("Check entered data!");
             }
         }
 
@@ -156,18 +140,19 @@ namespace lr_1_3
 
         private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CSV файли (*.csv)|*.csv|Всі файли (*.*)|*.*";
-            saveFileDialog.Title = "Зберегти таблицю";
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "CSV files (*.csv)|*.csv";
+            save.Title = "Save table";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+                using (StreamWriter sw = new StreamWriter(save.FileName))
                 {
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
                         sw.Write(dataGridView1.Columns[i].HeaderText);
-                        if (i < dataGridView1.Columns.Count - 1) sw.Write(";");
+                        if (i < dataGridView1.Columns.Count - 1)
+                            sw.Write(";");
                     }
                     sw.WriteLine();
                     foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -177,7 +162,8 @@ namespace lr_1_3
                             for (int i = 0; i < row.Cells.Count; i++)
                             {
                                 sw.Write(row.Cells[i].Value);
-                                if (i < row.Cells.Count - 1) sw.Write(";");
+                                if (i < row.Cells.Count - 1)
+                                    sw.Write(";");
                             }
                             sw.WriteLine();
                         }
@@ -188,31 +174,59 @@ namespace lr_1_3
 
         private void створитиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV файли (*.csv)|*.csv|Всі файли (*.*)|*.*";
-            openFileDialog.Title = "Відкрити таблицю";
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "CSV files (*.csv)|*.csv";
+            open.Title = "Open table";
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (open.ShowDialog() == DialogResult.OK)
             {
+                rooms.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.Columns.Clear();
 
-                string[] lines = File.ReadAllLines(openFileDialog.FileName);
-
-                if (lines.Length > 0)
+                string[] lines = File.ReadAllLines(open.FileName);
+                if (lines.Length == 0)
                 {
-                    string[] headers = lines[0].Split(';');
-                    foreach (string header in headers)
-                    {
-                        dataGridView1.Columns.Add(header, header);
-                    }
+                    MessageBox.Show("File is empty!");
+                    return;
+                }
+                string[] headers = lines[0].Split(';');
+                if (dataGridView1.Columns.Count == 0 || dataGridView1.Columns.Count != headers.Length)
+                {
+                    dataGridView1.Columns.Clear();
+                    foreach (string h in headers)
+                        dataGridView1.Columns.Add(h.Trim(), h.Trim());
+                }
 
-                    for (int i = 1; i < lines.Length; i++)
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] cells = lines[i].Split(';');
+                    if (cells.Length < headers.Length) continue;
+
+                    dataGridView1.Rows.Add(cells);
+
+                    try
                     {
-                        string[] cells = lines[i].Split(';');
-                        dataGridView1.Rows.Add(cells);
+                        Room r = new Room(
+                            int.Parse(cells[0]),
+                            double.Parse(cells[1]),
+                            int.Parse(cells[2]),
+                            cells[3],
+                            cells[4],
+                            cells[5].Trim().ToLower() == "yes" || cells[5].Trim().ToLower() == "є",
+                            cells[6],
+                            cells[7].Trim().ToLower() == "yes" || cells[7].Trim().ToLower() == "є",
+                            cells[8],
+                            decimal.Parse(cells[9])
+                        );
+                        rooms.Add(r);
+                    }
+                    catch
+                    {
+
                     }
                 }
+
+                MessageBox.Show("File loaded successfully!");
             }
         }
 
@@ -220,28 +234,37 @@ namespace lr_1_3
         {
             dataGridView2.Rows.Clear();
 
-            if (!int.TryParse(textBox5.Text, out int критерій))
+            if (string.IsNullOrWhiteSpace(textBox5.Text))
             {
-                MessageBox.Show("Введіть кількість місць для пошуку!");
+                MessageBox.Show("Введіть кількість місць!");
                 return;
             }
 
-            foreach (Room room in rooms)
+            int seats = int.Parse(textBox5.Text);
+
+            if (dataGridView2.Columns.Count == 0)
             {
-                if (room.Місця == критерій)
+                foreach (DataGridViewColumn col in dataGridView1.Columns)
                 {
-                    dataGridView2.Rows.Add(
-                        room.Місця,
-                        room.Площа,
-                        room.КількістьЛіжок,
-                        room.ВидЛіжка,
-                        room.Меблі,
-                        room.WiFi ? "Є" : "Немає",
-                        room.Клімат,
-                        room.Харчування,
-                        room.Санвузол,
-                        room.Ціна
-                    );
+                    dataGridView2.Columns.Add((DataGridViewColumn)col.Clone());
+                }
+            }
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow && row.Cells[0].Value != null)
+                {
+                    int value;
+                    if (int.TryParse(row.Cells[0].Value.ToString(), out value))
+                    {
+                        if (value == seats)
+                        {
+                            int index = dataGridView2.Rows.Add();
+                            for (int i = 0; i < row.Cells.Count; i++)
+                            {
+                                dataGridView2.Rows[index].Cells[i].Value = row.Cells[i].Value;
+                            }
+                        }
+                    }
                 }
             }
         }
