@@ -1,0 +1,27 @@
+# ========== Visual Studio ==========
+.vs/
+*.VC.db
+*.VC.opendb
+*.user
+*.suo
+
+# ========== Build artifacts ==========
+bin/
+obj/
+Debug/
+Release/
+*.pch
+*.ipch
+*.obj
+*.tlog
+*.log
+*.ilk
+*.pdb
+*.idb
+
+# ========== Other temp ==========
+*.cache
+*.tmp
+*.log
+*.db
+*.opendb
