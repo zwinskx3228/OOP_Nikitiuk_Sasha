@@ -6,7 +6,7 @@ namespace lr_1_3
     {
         public string Name { get; set; }
 
-        //АГРЕГАЦІЯ: Hotel МАЄ Room, але НЕ володіє ними
+        //композиція
         public List<Room> Rooms { get; set; } = new List<Room>();
 
         public Hotel(string name)

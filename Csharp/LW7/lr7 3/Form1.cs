@@ -306,16 +306,14 @@ namespace lr_1_3
         {
             SaveFileDialog save = new SaveFileDialog();
             save.Filter = "JSON Files (*.json)|*.json";
-            save.Title = "Зберегти таблицю";
-
             if (save.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    string json = JsonSerializer.Serialize(hotel.Rooms, new JsonSerializerOptions { WriteIndented = true });
+                    string json = JsonSerializer.Serialize(hotel.Rooms,
+                        new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(save.FileName, json);
-
-                    MessageBox.Show("Файл успішно збережено!", "Збереження", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Файл успішно збережено!");
                 }
                 catch (Exception ex)
                 {
@@ -329,46 +327,35 @@ namespace lr_1_3
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
-            open.Title = "Відкрити таблицю";
+
 
             if (open.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     string json = File.ReadAllText(open.FileName);
-                    List<Room>? loadedRooms = JsonSerializer.Deserialize<List<Room>>(json);
 
-                    if (loadedRooms == null || loadedRooms.Count == 0)
-                    {
-                        MessageBox.Show("Файл порожній або некоректний!");
-                        return;
-                    }
 
-                    hotel.Rooms = loadedRooms;
+                    hotel.Rooms = JsonSerializer.Deserialize<SortedList<int, Room>>(json)
+                    ?? new SortedList<int, Room>();
+
+
                     dataGridView1.Rows.Clear();
 
-                    foreach (var r in hotel.Rooms)
+
+                    foreach (var kv in hotel.Rooms)
                     {
-                        dataGridView1.Rows.Add(
-                            r.RoomType,
-                            r.seats,
-                            r.area,
-                            r.beds,
-                            r.bedType,
-                            r.furniture,
-                            r.wifi ? "Yes" : "No",
-                            r.climate,
-                            r.food ? "Yes" : "No",
-                            r.toilet,
-                            r.price
-                        );
+                        var r = kv.Value;
+                        dataGridView1.Rows.Add(r.RoomType, r.seats, r.area, r.beds, r.bedType, r.furniture,
+                        r.wifi ? "Yes" : "No", r.climate, r.food ? "Yes" : "No", r.toilet, r.price);
                     }
+
 
                     MessageBox.Show("Файл успішно відкрито!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Помилка при відкритті: " + ex.Message);
+                    MessageBox.Show("Помилка відкриття: " + ex.Message);
                 }
             }
         }
@@ -384,53 +371,36 @@ namespace lr_1_3
                 return;
             }
 
-            if (hotel.Rooms.Count == 0)
-            {
-                MessageBox.Show("Немає даних!");
-                return;
-            }
-
             int seats = int.Parse(textBox5.Text);
-            var filteredRooms = hotel.Rooms.Where(r => r.seats == seats).ToList();
+
+
+            var filteredRooms = hotel.Rooms
+            .Where(x => x.Value.seats == seats)
+            .Select(x => x.Value)
+            .ToList();
+
 
             if (filteredRooms.Count == 0)
             {
-                MessageBox.Show("Кімнати з такою кількістю місць не знайдено!");
+                MessageBox.Show("Кімнати не знайдено!");
                 return;
             }
 
+
             foreach (var r in filteredRooms)
             {
-                dataGridView2.Rows.Add(
-                    r.RoomType,
-                    r.seats,
-                    r.area,
-                    r.beds,
-                    r.bedType,
-                    r.furniture,
-                    r.wifi ? "Yes" : "No",
-                    r.climate,
-                    r.food ? "Yes" : "No",
-                    r.toilet,
-                    r.price
-                );
+                dataGridView2.Rows.Add(r.RoomType, r.seats, r.area, r.beds, r.bedType, r.furniture,
+                r.wifi ? "Yes" : "No", r.climate, r.food ? "Yes" : "No", r.toilet, r.price);
             }
+
 
             if (filteredRooms.Count >= 2)
             {
-                if (filteredRooms[0] > filteredRooms[1])
-                    MessageBox.Show("Перша кімната дорожча за другу!");
-                else if (filteredRooms[0] < filteredRooms[1])
-                    MessageBox.Show("Перша кімната дешевша за другу!");
-                else
-                    MessageBox.Show("Ціни кімнат однакові!");
-            }
-            else
-            {
-                MessageBox.Show("Знайдено лише одну кімнату!");
+                if (filteredRooms[0] > filteredRooms[1]) MessageBox.Show("Перша дорожча");
+                else if (filteredRooms[0] < filteredRooms[1]) MessageBox.Show("Перша дешевша");
+                else MessageBox.Show("Однакові");
             }
         }
-
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -457,18 +427,13 @@ namespace lr_1_3
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Немає даних для сортування!");
-                return;
-            }
-
             List<Room> list = new List<Room>();
 
-            // Зчитуємо з dataGridView1 список кімнат
+
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.IsNewRow) continue;
+
 
                 Room r = new Room()
                 {
@@ -485,18 +450,17 @@ namespace lr_1_3
                     price = int.Parse(row.Cells[10].Value.ToString())
                 };
 
+
                 list.Add(r);
             }
 
-            // власний делегат
-            RoomSorter sorter = (a, b) => a.price.CompareTo(b.price);
 
-            //реалізація сортування
+            RoomSorter sorter = (a, b) => a.price.CompareTo(b.price);
             List<Room> sorted = SortRooms(list, sorter);
 
-            FillGrid(dataGridView3, sorted);
 
-            MessageBox.Show("Відсортовано делегатом за ціною!");
+            FillGrid(dataGridView3, sorted);
+            MessageBox.Show("Відсортовано!");
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -516,7 +480,8 @@ namespace lr_1_3
                 return;
             }
 
-            hotel.Rooms.RemoveAt(index);
+            int key = hotel.Rooms.Keys[index];
+            hotel.Rooms.Remove(key);
             dataGridView1.Rows.RemoveAt(index);
 
             MessageBox.Show("Кімнату видалено!");

@@ -8,7 +8,7 @@ namespace lr_1_3
 {
     public partial class Form1 : Form
     {
-        // ====================== ІНТЕРФЕЙСИ ===========================
+        //інтерфейси 
         public interface IPriceable
         {
             int Price { get; }
@@ -96,7 +96,7 @@ namespace lr_1_3
             public string ExtraService { get; set; }
             public bool HasBalcony { get; set; }
 
-            public LuxuryRoom() { } // ВАЖЛИВО ДЛЯ JSON
+            public LuxuryRoom() { } 
 
             public LuxuryRoom(int seats, double area, int beds, string bedType, string furniture, bool wifi,
                               string climate, bool food, string toilet, int price,
@@ -279,7 +279,6 @@ namespace lr_1_3
             {
                 try
                 {
-                    // Зберігаємо список кімнат у JSON форматі
                     string json = JsonSerializer.Serialize(rooms, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(save.FileName, json);
 
